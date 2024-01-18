@@ -9,7 +9,7 @@
         <packagedElement xmi:type="uml:Package" xmi:id="_6nleEHuGEe2GIKHoGldpAQ" name="iesalandalus">
           <packagedElement xmi:type="uml:Package" xmi:id="_6nmsMHuGEe2GIKHoGldpAQ" name="programacion">
             <packagedElement xmi:type="uml:Package" xmi:id="_6nohYHuGEe2GIKHoGldpAQ" name="cuatroenraya">
-              <packagedElement xmi:type="uml:Class" xmi:id="_6nsy0HuGEe2GIKHoGldpAQ" name="MainApp" visibility="public">
+              <packagedElement xmi:type="uml:Class" xmi:id="_6nsy0HuGEe2GIKHoGldpAQ" name="Main" visibility="public">
                 <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_6usLoHuGEe2GIKHoGldpAQ" name="main" specification="_6uVmUHuGEe2GIKHoGldpAQ">
                   <language>JAVA</language>
                   <body>
