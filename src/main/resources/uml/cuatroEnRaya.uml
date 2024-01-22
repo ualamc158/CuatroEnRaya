@@ -97,12 +97,10 @@
                   <ownedOperation xmi:type="uml:Operation" xmi:id="_69juEHuGEe2GIKHoGldpAQ" name="leerJugador" visibility="public" isStatic="true" method="_69mxYHuGEe2GIKHoGldpAQ">
                     <ownedParameter xmi:type="uml:Parameter" xmi:id="_69k8MHuGEe2GIKHoGldpAQ" type="_D7DioHuJEe2GIKHoGldpAQ" direction="return"/>
                     <ownedParameter xmi:type="uml:Parameter" xmi:id="_69mKUHuGEe2GIKHoGldpAQ" name="ficha" type="_69HCIHuGEe2GIKHoGldpAQ"/>
-                    <ownedParameter xmi:type="uml:Parameter" xmi:id="_D7HNAHuJEe2GIKHoGldpAQ" name="ficha" type="_D6_4RHuJEe2GIKHoGldpAQ"/>
                   </ownedOperation>
                   <ownedOperation xmi:type="uml:Operation" xmi:id="_69nYcHuGEe2GIKHoGldpAQ" name="leerColumna" visibility="public" isStatic="true" method="_69p0sHuGEe2GIKHoGldpAQ">
                     <ownedParameter xmi:type="uml:Parameter" xmi:id="_69n_gHuGEe2GIKHoGldpAQ" type="_D7H0EHuJEe2GIKHoGldpAQ" direction="return"/>
                     <ownedParameter xmi:type="uml:Parameter" xmi:id="_69omkHuGEe2GIKHoGldpAQ" name="jugador" type="_6vdnsHuGEe2GIKHoGldpAQ"/>
-                    <ownedParameter xmi:type="uml:Parameter" xmi:id="_D7IbIHuJEe2GIKHoGldpAQ" name="jugador" type="_D7DioHuJEe2GIKHoGldpAQ"/>
                   </ownedOperation>
                 </packagedElement>
               </packagedElement>
