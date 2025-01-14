@@ -21,12 +21,12 @@ En las siguientes imágenes muestro una salida de la ejecución del programa que
 </p>
 </div>
 
-En este repositorio he creado un esqueleto de proyecto gradle que ya lleva incluidos todos los test necesarios que el programa debe pasar.
+En este repositorio he creado un esqueleto de proyecto gradle que ya lleva incluidos todos los test necesarios que el programa debe pasar. Notar que a la hora de implementar los tests se ha supuesto que la **posición [0, 0]** del array es la **esquina inferior izquierda**.
 
 Para ello te muestro un diagrama de clases para el mismo y poco a poco te iré explicando los diferentes pasos a realizar:
 <div align="center">
 <p>
-<img alt="Diagrama de clases" src="src/main/resources/cuatroEnRaya.png">
+<img alt="Diagrama de clases" src="src/main/resources/cuatroEnRaya.jpg">
 </p>
 </div>
 
@@ -62,7 +62,7 @@ Para ello te muestro un diagrama de clases para el mismo y poco a poco te iré e
 7. Crea el método `comprobaFicha` que lanzará una excepción si el parámetro pasado no es correcto.
 8. Crea el método `comprobarColumna` que lanzará una excepción si el parámetro pasado no es correcto.
 9. Crea el método `getPrimeraFilaVacia` que devolverá la primera fila vacía para la columna pasada por parámetro.
-10. Crea el método `objetivoAlcanzado` que aceptará como parámetro el número de fichas consecutivas que llevamos en una de las comprobaciones (horizontal, vertical, diagonalNE o diagonalNO) y devolverá true o false si el parámetro pasado es mayor o igual que la constante definida en la clase para las fichas conscutivas necesarias.
+10. Crea el método `objetivoAlcanzado` que aceptará como parámetro el número de fichas consecutivas que llevamos en una de las comprobaciones (horizontal, vertical, diagonalNE o diagonalNO) y devolverá `true` o `false` si el parámetro pasado es mayor o igual que la constante definida en la clase para las fichas conscutivas necesarias.
 11. Crea el método `comprobarHorizontal` que aceptará la fila y la ficha para la que queremos comprobar si hay cuatro fichas del mismo color seguidas en horizontal.
 12. Crea el método `comprobarVertical` que aceptará la columna y la ficha para la que queremos comprobar si hay cuatro fichas del mismo color seguidas en vertical.
 13. Crea el método `menor` que recibirá dos enteros y devolverá el menor de ellos.
@@ -83,7 +83,7 @@ Para ello te muestro un diagrama de clases para el mismo y poco a poco te iré e
 #### Creación de la clase `CuatroEnRaya`:
 1. La clase `CuatroEnRaya` tendrá una constante para indicar el número de jugadores (2), un atributo que será un array de objetos del tipo `Jugador` y otro atributo de la clase `Tablero`.
 2. Crea el `constructor con parámetros` al que le pasaremos como parámetros dos instancias del tipo Jugador representando a cada uno de los jugadores. Deberá hacer las comprobaciones adecuadas o lanzar la excepción adecuada. También deberá crear correctamente el array de jugadores e incializarlo y crear la instancia de la clase Tablero.
-3. Crea el método `tirar` que recibirá como parámetro el jugador que va a tirar y devolverá true o false indicando si esa jugada ha resultado ganadora o no. Para ello leerá la columna en la que el jugador quiere introducir la ficha llamando al método correcto de la clase Consola y llamará al método introducirFicha de la clase Tablero que devolverá si la jugada ha sido ganadora o no, o lanzará una excepción indicando que la columna está llena, la cual debemos capturar para informar al jugador y volver a repetir el proceso mientras no se introduzca una columna que no esté llena o la jugada haya resultado ganadora.
+3. Crea el método `tirar` que recibirá como parámetro el jugador que va a tirar y devolverá true o false indicando si esa jugada ha resultado ganadora o no. Para ello leerá la columna en la que el jugador quiere introducir la ficha llamando al método correcto de la clase Consola y llamará al método introducirFicha de la clase Tablero que devolverá si la jugada ha sido ganadora o no, o lanzará una excepción indicando que la columna está llena, la cual debemos capturar para informar al jugador y volver a repetir el proceso mientras no se introduzca una fila que no esté llena o la jugada haya resultado ganadora.
 4. Crea el método `jugar` que repetirá, mientras queden casillas libres y no haya ganador, la acción de tirar alternando los jugadores en cada iteración. Al terminar informará de quién ha ganado o que no hay más casillas libres.
 
 #### Creación de la `MainApp`:

@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import javax.naming.OperationNotSupportedException;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class CasillaTest {
@@ -40,8 +38,8 @@ class CasillaTest {
 	@CsvSource({"AZUL, AZUL", "AZUL, VERDE", "VERDE, VERDE", "VERDE, AZUL"})
 	void ponerFichaCasillaOcupadaLanzaExcepcion(Ficha primera, Ficha segunda) {
 		assertDoesNotThrow(() -> casilla.setFicha(primera));
-		OperationNotSupportedException onse = assertThrows(OperationNotSupportedException.class, () -> casilla.setFicha(segunda));
-		assertEquals("La casilla ya contiene una ficha.", onse.getMessage());
+		CuatroEnRayaExcepcion cere = assertThrows(CuatroEnRayaExcepcion.class, () -> casilla.setFicha(segunda));
+		assertEquals("La casilla ya contiene una ficha.", cere.getMessage());
 	}
 	
 	@Test

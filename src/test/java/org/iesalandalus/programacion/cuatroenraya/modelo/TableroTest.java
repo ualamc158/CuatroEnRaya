@@ -8,7 +8,6 @@ import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import javax.naming.OperationNotSupportedException;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.stream.Stream;
@@ -61,8 +60,8 @@ class TableroTest {
 	@EnumSource(Ficha.class)
 	void introducirFichaColumnaLlenaLanzaExcepcion(Ficha ficha) {
 		llenarColumna(tablero, 4);
-		OperationNotSupportedException onse = assertThrows(OperationNotSupportedException.class, () -> tablero.introducirFicha(4, ficha));
-		assertEquals("Columna llena.", onse.getMessage());
+		CuatroEnRayaExcepcion cere = assertThrows(CuatroEnRayaExcepcion.class, () -> tablero.introducirFicha(4, ficha));
+		assertEquals("Columna llena.", cere.getMessage());
 	}
 
 	@Test

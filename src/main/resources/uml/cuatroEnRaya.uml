@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:PapyrusJava="http://www.eclipse.org/papyrus/PapyrusJava/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:record="http:///schemas/record/_Dg5xsHSZEe6RyuvFF9iE1Q/0" xmlns:standard="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http:///schemas/record/_Dg5xsHSZEe6RyuvFF9iE1Q/0 record.profile.uml#_Dg6YwHSZEe6RyuvFF9iE1Q">
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Codegen="http://www.eclipse.org/papyrus/Codegen/1" xmlns:PapyrusJava="http://www.eclipse.org/papyrus/PapyrusJava/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:record="http:///schemas/record/_Dg5xsHSZEe6RyuvFF9iE1Q/0" xmlns:standard="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http:///schemas/record/_Dg5xsHSZEe6RyuvFF9iE1Q/0 record.profile.uml#_Dg6YwHSZEe6RyuvFF9iE1Q">
   <uml:Model xmi:id="_0DdCsHuGEe2GIKHoGldpAQ" name="cuatroEnRaya">
     <packageImport xmi:type="uml:PackageImport" xmi:id="_0K_OEHuGEe2GIKHoGldpAQ">
       <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
@@ -125,6 +125,7 @@
       <packagedElement xmi:type="uml:Package" xmi:id="_6n6OMHuGEe2GIKHoGldpAQ" name="java">
         <packagedElement xmi:type="uml:Package" xmi:id="_6n8DYHuGEe2GIKHoGldpAQ" name="lang">
           <packagedElement xmi:type="uml:Class" xmi:id="_6n9RgHuGEe2GIKHoGldpAQ" name="String"/>
+          <packagedElement xmi:type="uml:Class" xmi:id="_gllQUNJREe-HtfZmR_bBuw" name="Exception"/>
         </packagedElement>
       </packagedElement>
     </packagedElement>
@@ -136,7 +137,7 @@
       </packagedElement>
       <packagedElement xmi:type="uml:Package" xmi:id="_6xj5cHuGEe2GIKHoGldpAQ" name="javax">
         <packagedElement xmi:type="uml:Package" xmi:id="_6xkggHuGEe2GIKHoGldpAQ" name="naming">
-          <packagedElement xmi:type="uml:Class" xmi:id="_6xlHkHuGEe2GIKHoGldpAQ" name="OperationNotSupportedException"/>
+          <packagedElement xmi:type="uml:Class" xmi:id="_6xlHkHuGEe2GIKHoGldpAQ" name="CuatroEnRayaExcepcion"/>
         </packagedElement>
       </packagedElement>
       <packagedElement xmi:type="uml:Package" xmi:id="_D6_RMHuJEe2GIKHoGldpAQ" name="org">
@@ -185,7 +186,7 @@
         throw new NullPointerException(&quot;ERROR: No se puede poner una ficha nula.&quot;);
     }
     if (estaOcupada()) {
-        throw new OperationNotSupportedException(&quot;ERROR: Ya contengo una ficha.&quot;);
+        throw new CuatroEnRayaExcepcion(&quot;ERROR: Ya contengo una ficha.&quot;);
     }
     this.ficha = ficha;
 </body>
@@ -351,7 +352,7 @@
     comprobarFicha(ficha);
     comprobarColumna(columna);
     if (columnaLlena(columna)) {
-        throw new OperationNotSupportedException(&quot;ERROR: Columna llena.&quot;);
+        throw new CuatroEnRayaExcepcion(&quot;ERROR: Columna llena.&quot;);
     } else {
         int fila = getPrimeraFilaVacia(columna);
         casillas[fila][columna].setFicha(ficha);
@@ -534,16 +535,16 @@
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_6zSXwHuGEe2GIKHoGldpAQ" name="columna" type="_6vT2sHuGEe2GIKHoGldpAQ"/>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_6zTl4HuGEe2GIKHoGldpAQ" name="ficha" type="_69HCIHuGEe2GIKHoGldpAQ"/>
           </ownedOperation>
-          <ownedOperation xmi:type="uml:Operation" xmi:id="_6zWpMHuGEe2GIKHoGldpAQ" name="comprobarDiagonalNE" visibility="private" method="_6za6oHuGEe2GIKHoGldpAQ">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_6zWpMHuGEe2GIKHoGldpAQ" name="comprobarDiagonalNE" visibility="private" concurrency="guarded" method="_6za6oHuGEe2GIKHoGldpAQ">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_6zXQQHuGEe2GIKHoGldpAQ" type="_6wCPcHuGEe2GIKHoGldpAQ" direction="return"/>
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_6zYeYHuGEe2GIKHoGldpAQ" name="filaSemilla" type="_6vT2sHuGEe2GIKHoGldpAQ"/>
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_6zZFcHuGEe2GIKHoGldpAQ" name="columnaSemilla" type="_6vT2sHuGEe2GIKHoGldpAQ"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_6zYeYHuGEe2GIKHoGldpAQ" name="filaActual" type="_6vT2sHuGEe2GIKHoGldpAQ"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_6zZFcHuGEe2GIKHoGldpAQ" name="columnaActual" type="_6vT2sHuGEe2GIKHoGldpAQ"/>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_6zaTkHuGEe2GIKHoGldpAQ" name="ficha" type="_69HCIHuGEe2GIKHoGldpAQ"/>
           </ownedOperation>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_6zcv0HuGEe2GIKHoGldpAQ" name="comprobarDiagonalNO" visibility="private" method="_6zhBQHuGEe2GIKHoGldpAQ">
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_6zdW4HuGEe2GIKHoGldpAQ" type="_6wCPcHuGEe2GIKHoGldpAQ" direction="return"/>
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_6zelAHuGEe2GIKHoGldpAQ" name="filaSemilla" type="_6vT2sHuGEe2GIKHoGldpAQ"/>
-            <ownedParameter xmi:type="uml:Parameter" xmi:id="_6zfMEHuGEe2GIKHoGldpAQ" name="columnaSemilla" type="_6vT2sHuGEe2GIKHoGldpAQ"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_6zelAHuGEe2GIKHoGldpAQ" name="filaActual" type="_6vT2sHuGEe2GIKHoGldpAQ"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_6zfMEHuGEe2GIKHoGldpAQ" name="columnaActual" type="_6vT2sHuGEe2GIKHoGldpAQ"/>
             <ownedParameter xmi:type="uml:Parameter" xmi:id="_6zfzIHuGEe2GIKHoGldpAQ" name="ficha" type="_69HCIHuGEe2GIKHoGldpAQ"/>
           </ownedOperation>
           <ownedOperation xmi:type="uml:Operation" xmi:id="_6zi2cHuGEe2GIKHoGldpAQ" name="menor" visibility="private" method="_6znH4HuGEe2GIKHoGldpAQ">
@@ -632,7 +633,7 @@
             jugadaGanadora = tablero.introducirFicha(Consola.leerColumna(jugador), jugador.getColorFichas());
             System.out.printf(&quot;%n%s%n&quot;, tablero);
             jugadaValida = true;
-        } catch (OperationNotSupportedException e) {
+        } catch (CuatroEnRayaExcepcion e) {
             System.out.println(e.getMessage());
             jugadaValida = false;
         }
@@ -666,6 +667,30 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_scpFgHuKEe2fEYxBxMk4aQ"/>
       </ownedEnd>
     </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_gkfEINJREe-HtfZmR_bBuw" name="CuatroEnRayaResuleto">
+      <packagedElement xmi:type="uml:Package" xmi:id="_gld7kNJREe-HtfZmR_bBuw" name="org">
+        <packagedElement xmi:type="uml:Package" xmi:id="_glfJsNJREe-HtfZmR_bBuw" name="iesalandalus">
+          <packagedElement xmi:type="uml:Package" xmi:id="_glfwwNJREe-HtfZmR_bBuw" name="programacion">
+            <packagedElement xmi:type="uml:Package" xmi:id="_glgX0NJREe-HtfZmR_bBuw" name="cuatroenraya">
+              <packagedElement xmi:type="uml:Package" xmi:id="_glg-4NJREe-HtfZmR_bBuw" name="modelo">
+                <packagedElement xmi:type="uml:Class" xmi:id="_glkCMNJREe-HtfZmR_bBuw" name="CuatroEnRayaExcepcion" visibility="public">
+                  <generalization xmi:type="uml:Generalization" xmi:id="_gl6ngNJREe-HtfZmR_bBuw" general="_gllQUNJREe-HtfZmR_bBuw"/>
+                  <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_gmXTcNJREe-HtfZmR_bBuw" name="CuatroEnRayaExcepcion" specification="_gl_gANJREe-HtfZmR_bBuw">
+                    <language>JAVA</language>
+                    <body>
+    super(message);
+</body>
+                  </ownedBehavior>
+                  <ownedOperation xmi:type="uml:Operation" xmi:id="_gl_gANJREe-HtfZmR_bBuw" name="CuatroEnRayaExcepcion" visibility="public" method="_gmXTcNJREe-HtfZmR_bBuw">
+                    <ownedParameter xmi:type="uml:Parameter" xmi:id="_gmM7YNJREe-HtfZmR_bBuw" name="message" type="_6n9RgHuGEe2GIKHoGldpAQ"/>
+                  </ownedOperation>
+                </packagedElement>
+              </packagedElement>
+            </packagedElement>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_6lWpcHuGEe2GIKHoGldpAQ">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_6laT0HuGEe2GIKHoGldpAQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/PapyrusJava/1#/"/>
@@ -695,7 +720,7 @@
   <standard:Create xmi:id="_6vxJsHuGEe2GIKHoGldpAQ" base_BehavioralFeature="_6vn_wHuGEe2GIKHoGldpAQ"/>
   <standard:Create xmi:id="_6wgwkHuGEe2GIKHoGldpAQ" base_BehavioralFeature="_6wXmoHuGEe2GIKHoGldpAQ"/>
   <standard:Create xmi:id="_6xY6UHuGEe2GIKHoGldpAQ" base_BehavioralFeature="_6xSzsHuGEe2GIKHoGldpAQ"/>
-  <PapyrusJava:External xmi:id="_6xrOMHuGEe2GIKHoGldpAQ" name="javax.naming.OperationNotSupportedException" base_Classifier="_6xlHkHuGEe2GIKHoGldpAQ"/>
+  <PapyrusJava:External xmi:id="_6xrOMHuGEe2GIKHoGldpAQ" name="javax.naming.CuatroEnRayaExcepcion" base_Classifier="_6xlHkHuGEe2GIKHoGldpAQ"/>
   <standard:Create xmi:id="_6yXxwHuGEe2GIKHoGldpAQ" base_BehavioralFeature="_6ySSMHuGEe2GIKHoGldpAQ"/>
   <standard:Create xmi:id="_69WSsHuGEe2GIKHoGldpAQ" base_BehavioralFeature="_69TPYHuGEe2GIKHoGldpAQ"/>
   <PapyrusJava:External xmi:id="_-JjwAHuGEe2GIKHoGldpAQ" name="Ficha" base_Classifier="_69HCIHuGEe2GIKHoGldpAQ"/>
@@ -704,4 +729,6 @@
   <PapyrusJava:External xmi:id="_D7F-4HuJEe2GIKHoGldpAQ" name="org.iesalandalus.programacion.cuatroenraya.modelo.Jugador" base_Classifier="_D7DioHuJEe2GIKHoGldpAQ"/>
   <PapyrusJava:External xmi:id="_TgpXcHuJEe2GIKHoGldpAQ" name="org.iesalandalus.programacion.cuatroenraya.modelo.Tablero" base_Classifier="_Tgm7MHuJEe2GIKHoGldpAQ"/>
   <record:Record xmi:id="_I8b6oLOBEe6XW4KiHXHn1A" base_Class="_6vdnsHuGEe2GIKHoGldpAQ"/>
+  <Codegen:External xmi:id="_gl29INJREe-HtfZmR_bBuw" name="java.lang.Exception" base_Classifier="_gllQUNJREe-HtfZmR_bBuw"/>
+  <standard:Create xmi:id="_gmGNsNJREe-HtfZmR_bBuw" base_BehavioralFeature="_gl_gANJREe-HtfZmR_bBuw"/>
 </xmi:XMI>
