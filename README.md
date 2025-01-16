@@ -21,7 +21,7 @@ En las siguientes imágenes muestro una salida de la ejecución del programa que
 </p>
 </div>
 
-En este repositorio he creado un esqueleto de proyecto gradle que ya lleva incluidos todos los test necesarios que el programa debe pasar. Notar que a la hora de implementar los tests se ha supuesto que la **posición [0, 0]** del array es la **esquina inferior izquierda**.
+En este repositorio he creado un esqueleto de proyecto gradle que ya lleva incluidos todos los test necesarios que el programa debe pasar. Notar que a la hora de realizar las explicaciones del enunciado se ha supuesto que la **posición [0, 0]** del array es la **esquina inferior izquierda**.
 
 Para ello te muestro un diagrama de clases para el mismo y poco a poco te iré explicando los diferentes pasos a realizar:
 <div align="center">
