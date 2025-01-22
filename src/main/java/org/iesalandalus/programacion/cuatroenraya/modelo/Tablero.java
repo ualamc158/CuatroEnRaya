@@ -17,7 +17,7 @@ public class Tablero {
     public boolean estaVacio() {
         boolean salida = false;
 
-        for (int columna = 0; columna < COLUMNAS && ; columna++) {
+        for (int columna = 0; columna < COLUMNAS &&; columna++) {
             if (columnaVacia(columna)) {
                 salida = true;
             } else {
