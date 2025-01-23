@@ -15,16 +15,23 @@ public class Tablero {
     }
 
     public boolean estaVacio() {
-        boolean salida = false;
-
-        for (int columna = 0; columna < COLUMNAS &&; columna++) {
-            if (columnaVacia(columna)) {
-                salida = true;
-            } else {
-                salida = false;
-            }
+        boolean vacio = true;
+        for (int columna = 0; columna < COLUMNAS && vacio; columna++) {
+            vacio = columnaVacia(columna);
         }
-        return salida;
+        return vacio;
+    }
+
+    private boolean columnaLlena(int columna) {
+        return columna > 0;
+    }
+
+    public boolean estaLleno() {
+        boolean lleno = false;
+        for (int columna = 0; columna < COLUMNAS && !lleno; columna++) {
+            lleno = columnaLlena(columna);
+        }
+        return lleno;
     }
 
 }
