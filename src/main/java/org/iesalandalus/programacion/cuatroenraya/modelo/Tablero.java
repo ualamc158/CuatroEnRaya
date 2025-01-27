@@ -1,13 +1,15 @@
 package org.iesalandalus.programacion.cuatroenraya.modelo;
 
+import java.util.Objects;
+
 public class Tablero {
     public static final int FILAS = 6;
     public static final int COLUMNAS = 7;
     public static final int FICHAS_IGUALES_CONSECUTIVAS_NECESARIAS = 4;
-    private Casilla[][] casillas;
+    private Casilla[][] tablero;
 
     public Tablero() {
-        Casilla[][] casillas = new Casilla[FILAS][COLUMNAS];
+        tablero = new Casilla[FILAS][COLUMNAS];
     }
 
     private boolean columnaVacia(int columna) {
@@ -23,15 +25,46 @@ public class Tablero {
     }
 
     private boolean columnaLlena(int columna) {
-        return columna > 0;
+        return tablero[FILAS - 1][columna].estaOcupada();
     }
 
     public boolean estaLleno() {
-        boolean lleno = false;
-        for (int columna = 0; columna < COLUMNAS && !lleno; columna++) {
-            lleno = columnaLlena(columna);
+        boolean lleno = true;
+        for (int columna = 0; columna < COLUMNAS && lleno; columna++) {
+            if (!columnaLlena(columna)) {
+                lleno = false;
+            }
         }
         return lleno;
     }
+
+    public boolean introducirFicha(int columna, Ficha ficha) {
+
+    }
+
+    private void comprobarFicha(Ficha ficha) {
+        Objects.requireNonNull(ficha, "La ficha no puede ser nula.");
+    }
+
+    private void comprobarColumna(int columna) {
+        if (columna < 0 || columna > COLUMNAS) {
+            throw new IllegalArgumentException("La columna es erronea");
+        }
+    }
+
+    private int getPrimeraFilaVacia(int columna) {
+        comprobarColumna(columna);
+        int fila;
+        boolean encontrada = false;
+        for (fila = 0; fila < FILAS && !encontrada; fila++) {
+            encontrada = !tablero[fila][columna].estaOcupada();
+        }
+        return fila;
+    }
+
+    private boolean objetivoAlcanzado(int fichasIgualesConsecutivas){
+
+    }
+
 
 }
