@@ -47,7 +47,7 @@ public class Tablero {
         comprobarColumna(columna);
         comprobarFicha(ficha);
         if(columnaLlena(columna)){
-            throw new CuatroEnRayaExcepcion("La columna esta llena.");
+            throw new CuatroEnRayaExcepcion("Columna llena.");
         }
         tablero[getPrimeraFilaVacia(columna)][columna].setFicha(ficha);
         return true;
@@ -58,8 +58,8 @@ public class Tablero {
     }
 
     private void comprobarColumna(int columna) {
-        if (columna < 0 || columna > COLUMNAS) {
-            throw new IllegalArgumentException("La columna es erronea");
+        if (columna < 0 || columna >= COLUMNAS) {
+            throw new IllegalArgumentException("Columna incorrecta.");
         }
     }
 
@@ -70,7 +70,7 @@ public class Tablero {
         for (fila = 0; fila < FILAS && !encontrada; fila++) {
             encontrada = !tablero[fila][columna].estaOcupada();
         }
-        return fila;
+        return fila - 1;
     }
 
     /*private boolean objetivoAlcanzado(int fichasIgualesConsecutivas){
