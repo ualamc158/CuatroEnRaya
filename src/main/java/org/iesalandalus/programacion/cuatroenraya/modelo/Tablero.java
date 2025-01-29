@@ -87,9 +87,14 @@ public class Tablero {
         return contador >= 4;
     }
 
-    /*private boolean comprobarVertical(int columna, Ficha ficha){
+    private boolean comprobarVertical(int columna, Ficha ficha){
         int contador = 0;
-        for
-    }*/
+        for (int fila = 0; fila < FILAS; fila++) {
+            if (ficha == tablero[fila][columna].getFicha()) {
+                contador++;
+            }
+        }
+        return contador >= 4;
+    }
 
 }
