@@ -10,6 +10,11 @@ public class Tablero {
 
     public Tablero() {
         tablero = new Casilla[FILAS][COLUMNAS];
+        for (int fila = 0; fila < FILAS; fila++) {
+            for (int columna = 0; columna < COLUMNAS; columna++){
+                tablero[fila][columna] = new Casilla();
+            }
+        }
     }
 
     private boolean columnaVacia(int columna) {
@@ -38,8 +43,14 @@ public class Tablero {
         return lleno;
     }
 
-    public boolean introducirFicha(int columna, Ficha ficha) {
-
+    public boolean introducirFicha(int columna, Ficha ficha) throws CuatroEnRayaExcepcion {
+        comprobarColumna(columna);
+        comprobarFicha(ficha);
+        if(columnaLlena(columna)){
+            throw new CuatroEnRayaExcepcion("La columna esta llena.");
+        }
+        tablero[getPrimeraFilaVacia(columna)][columna].setFicha(ficha);
+        return true;
     }
 
     private void comprobarFicha(Ficha ficha) {
@@ -62,9 +73,23 @@ public class Tablero {
         return fila;
     }
 
-    private boolean objetivoAlcanzado(int fichasIgualesConsecutivas){
+    /*private boolean objetivoAlcanzado(int fichasIgualesConsecutivas){
 
+    }*/
+
+    private boolean comprobarHorizontal(int fila, Ficha ficha) {
+        int contador = 0;
+        for (int columna = 0; columna < COLUMNAS; columna++) {
+            if (ficha == tablero[fila][columna].getFicha()) {
+                contador++;
+            }
+        }
+        return contador >= 4;
     }
 
+    /*private boolean comprobarVertical(int columna, Ficha ficha){
+        int contador = 0;
+        for
+    }*/
 
 }
