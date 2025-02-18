@@ -1,25 +1,24 @@
 package org.iesalandalus.programacion.cuatroenraya.modelo;
 
-import java.util.Arrays;
 import java.util.Objects;
 
 public class Tablero {
     public static final int FILAS = 6;
     public static final int COLUMNAS = 7;
     public static final int FICHAS_IGUALES_CONSECUTIVAS_NECESARIAS = 4;
-    private Casilla[][] tablero;
+    private final Casilla[][] casillas;
 
     public Tablero() {
-        tablero = new Casilla[FILAS][COLUMNAS];
+        casillas = new Casilla[FILAS][COLUMNAS];
         for (int fila = 0; fila < FILAS; fila++) {
             for (int columna = 0; columna < COLUMNAS; columna++) {
-                tablero[fila][columna] = new Casilla();
+                casillas[fila][columna] = new Casilla();
             }
         }
     }
 
     private boolean columnaVacia(int columna) {
-        return !tablero[0][columna].estaOcupada();
+        return !casillas[0][columna].estaOcupada();
     }
 
     public boolean estaVacio() {
@@ -31,7 +30,7 @@ public class Tablero {
     }
 
     private boolean columnaLlena(int columna) {
-        return tablero[FILAS - 1][columna].estaOcupada();
+        return casillas[FILAS - 1][columna].estaOcupada();
     }
 
     public boolean estaLleno() {
@@ -51,7 +50,7 @@ public class Tablero {
         if (columnaLlena(columna)) {
             throw new CuatroEnRayaExcepcion("Columna llena.");
         }
-        tablero[fila][columna].setFicha(ficha);
+        casillas[fila][columna].setFicha(ficha);
         return comprobarTirada(fila, columna);
     }
 
@@ -69,7 +68,7 @@ public class Tablero {
         int fila;
         boolean encontrada = false;
         for (fila = 0; fila < FILAS && !encontrada; fila++) {
-            encontrada = !tablero[fila][columna].estaOcupada();
+            encontrada = !casillas[fila][columna].estaOcupada();
         }
         return fila - 1;
     }
@@ -81,7 +80,7 @@ public class Tablero {
     private boolean comprobarHorizontal(int fila, Ficha ficha) {
         int contador = 0;
         for (int columna = 0; columna < COLUMNAS && !objetivoAlcanzado(contador); columna++) {
-            if (ficha == tablero[fila][columna].getFicha()) {
+            if (ficha == casillas[fila][columna].getFicha()) {
                 contador++;
             } else {
                 contador = 0;
@@ -93,7 +92,7 @@ public class Tablero {
     private boolean comprobarVertical(int columna, Ficha ficha) {
         int contador = 0;
         for (int fila = 0; fila < FILAS && !objetivoAlcanzado(contador); fila++) {
-            if (ficha == tablero[fila][columna].getFicha()) {
+            if (ficha == casillas[fila][columna].getFicha()) {
                 contador++;
             } else {
                 contador = 0;
@@ -109,7 +108,7 @@ public class Tablero {
         int contador = 0;
 
         for (int fila = filaInicial, columna = columnaInicial; fila < FILAS && columna < COLUMNAS && !objetivoAlcanzado(contador); fila++, columna++) {
-            if (tablero[fila][columna].estaOcupada() && ficha == tablero[fila][columna].getFicha()) {
+            if (casillas[fila][columna].estaOcupada() && ficha == casillas[fila][columna].getFicha()) {
                 contador++;
             } else {
                 contador = 0;
@@ -124,7 +123,7 @@ public class Tablero {
         int columnaInicial = columnaActual + desplazamiento;
         int contador = 0;
         for (int fila = filaInicial, columna = columnaInicial; fila < FILAS && columna >= 0 && !objetivoAlcanzado(contador); fila++, columna--) {
-            if (tablero[fila][columna].estaOcupada() && ficha == tablero[fila][columna].getFicha()) {
+            if (casillas[fila][columna].estaOcupada() && ficha == casillas[fila][columna].getFicha()) {
                 contador++;
             } else {
                 contador = 0;
@@ -138,7 +137,7 @@ public class Tablero {
     }
 
     private boolean comprobarTirada(int fila, int columna) {
-        Ficha fichaActual = tablero[fila][columna].getFicha();
+        Ficha fichaActual = casillas[fila][columna].getFicha();
         return comprobarVertical(columna, fichaActual) ||
                 comprobarHorizontal(fila, fichaActual) ||
                 comprobarDiagonalNE(fila, columna, fichaActual) ||
@@ -147,10 +146,15 @@ public class Tablero {
 
     @Override
     public String toString() {
-        StringBuilder salida = new StringBuilder("|");
+        StringBuilder salida = new StringBuilder();
         for (int i = FILAS - 1; i >= 0; i--){
+            salida.append("|");
             for (int j = 0; j < COLUMNAS; j++) {
-                salida.append(tablero[i][j].toString());
+                salida.append(casillas[i][j]);
+            }
+            salida.append("|").append("\n");
         }
+        salida.append(" ").append("-".repeat(COLUMNAS)).append("\n");
+        return salida.toString();
     }
 }
